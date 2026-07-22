@@ -1,0 +1,245 @@
+:root {
+  color-scheme: light;
+
+  --color-bg: #f2f2f3;
+  --color-surface: #e9e9ea;
+  --color-text: #1d1f20;
+  --color-accent: #5980a6;
+  --color-divider: color-mix(in srgb, #1d1f20 16%, transparent);
+
+  --color-accent-200: #d6ebff;
+  --color-accent-300: #b5d9fd;
+  --color-accent-700: #416180;
+  --color-accent-900: #1d2d3d;
+
+  --kicker: var(--color-accent-700);
+  --band-bg: var(--color-accent-900);
+  --btn-bg: var(--color-accent-900);
+  --btn-ink: #ffffff;
+  --btn-line: var(--color-accent-900);
+
+  --font-heading-weight: 600;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #16181a;
+  --color-surface: #202426;
+  --color-text: #eef1f3;
+  --color-divider: color-mix(in srgb, #ffffff 15%, transparent);
+
+  --kicker: #9ec4e8;
+  --band-bg: #1b2733;
+  --btn-bg: #eef1f3;
+  --btn-ink: #16181a;
+  --btn-line: #eef1f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  text-wrap: pretty;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--kicker);
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--kicker);
+  text-decoration: underline;
+}
+
+body,
+.btn,
+a {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+@keyframes ocPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.72);
+  }
+}
+
+/* — layout — */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  padding: 10px 16px;
+  min-height: 44px;
+}
+.btn:hover {
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--btn-bg);
+  color: var(--btn-ink);
+  border-color: var(--btn-line);
+}
+.btn-primary:hover {
+  opacity: 0.88;
+}
+.btn-secondary {
+  border-color: var(--color-divider);
+}
+.btn-secondary:hover {
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+}
+
+/* — nav — */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+}
+.nav a.nav-link {
+  color: inherit;
+  font-size: 15px;
+  text-decoration: none;
+}
+.nav a.nav-link:hover {
+  color: var(--kicker);
+  text-decoration: underline;
+}
+@media (max-width: 640px) {
+  .nav a.nav-link {
+    display: none !important;
+  }
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  cursor: pointer;
+  color: var(--color-text);
+  flex: none;
+}
+
+/* — blueprint frame: a hairline-bordered wireframe callout with registration-mark corners — */
+.blueprint {
+  position: relative;
+  border: 1px solid var(--color-divider);
+}
+.blueprint > .corner {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.blueprint > .corner::before,
+.blueprint > .corner::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.blueprint > .corner::before {
+  left: 5px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+.blueprint > .corner::after {
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+.blueprint > .corner.tl {
+  top: -6px;
+  left: -6px;
+}
+.blueprint > .corner.tr {
+  top: -6px;
+  right: -6px;
+}
+.blueprint > .corner.bl {
+  bottom: -6px;
+  left: -6px;
+}
+.blueprint > .corner.br {
+  bottom: -6px;
+  right: -6px;
+}
+
+.demo-call:hover {
+  background: color-mix(in srgb, #fff 8%, transparent);
+}
+
+/* — FAQ native disclosure: themed indicator, keyboard + ARIA free — */
+.faq summary {
+  list-style: none;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq .faq-sign::after {
+  content: "+";
+}
+.faq details[open] .faq-sign::after {
+  content: "\2013";
+}
+.faq details[open] .faq-q {
+  color: var(--kicker);
+}
