@@ -25,12 +25,13 @@ const CAPABILITIES = [
 
 export default function WhatItDoes() {
   return (
-    <Section id="what">
+    <Section id="what" reveal={false}>
       <Kicker index="02" label="What it does" />
       <SectionHeading maxWidth="22ch" style={{ marginBottom: "clamp(32px,4vw,52px)" }}>
         A full inside sales agent, working every hour you don&apos;t.
       </SectionHeading>
       <div
+        data-reveal-stagger=""
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
@@ -38,7 +39,7 @@ export default function WhatItDoes() {
         }}
       >
         {CAPABILITIES.map((c) => (
-          <div key={c.n} className="blueprint" style={{ padding: 26 }}>
+          <div key={c.n} className="blueprint card-hover" style={{ padding: 26 }}>
             <i className="corner tl" />
             <i className="corner tr" />
             <i className="corner bl" />

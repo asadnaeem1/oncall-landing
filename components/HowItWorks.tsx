@@ -25,12 +25,13 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <Section id="how">
+    <Section id="how" reveal={false}>
       <Kicker index="03" label="How it works" />
       <SectionHeading maxWidth="22ch" style={{ marginBottom: "clamp(32px,4vw,52px)" }}>
         Live in about three weeks. Almost none of it is your work.
       </SectionHeading>
       <div
+        data-reveal-stagger=""
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))",

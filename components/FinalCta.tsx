@@ -3,9 +3,10 @@ import { CALENDLY_URL, DEMO_PHONE_DISPLAY, DEMO_PHONE_TEL } from "@/lib/constant
 export default function FinalCta() {
   return (
     <section
+      className="band"
+      data-reveal=""
       style={{
         margin: "clamp(40px,5vw,72px) 0",
-        background: "var(--band-bg)",
         color: "#fff",
         padding: "clamp(48px,7vw,96px) clamp(24px,5vw,72px)",
         position: "relative",

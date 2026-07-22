@@ -5,10 +5,11 @@ export default function Demo() {
   return (
     <section
       id="demo"
+      className="band"
+      data-reveal=""
       style={{
         scrollMarginTop: 80,
         margin: "clamp(40px,5vw,72px) 0",
-        background: "var(--band-bg)",
         color: "#fff",
         padding: "clamp(44px,6vw,88px) clamp(24px,5vw,72px)",
         position: "relative",

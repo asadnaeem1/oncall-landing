@@ -48,6 +48,7 @@ export default function Faq() {
     <section
       id="faq"
       className="faq"
+      data-reveal=""
       style={{
         padding: "clamp(48px,6vw,84px) 0",
         borderTop: "1px solid var(--color-divider)",

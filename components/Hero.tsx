@@ -2,7 +2,10 @@ import { CALENDLY_URL } from "@/lib/constants";
 
 export default function Hero() {
   return (
-    <section style={{ padding: "clamp(56px,9vw,116px) 0 clamp(48px,7vw,88px)" }}>
+    <section
+      data-reveal=""
+      style={{ padding: "clamp(56px,9vw,116px) 0 clamp(48px,7vw,88px)" }}
+    >
       <h1
         style={{
           fontFamily: "var(--font-heading)",

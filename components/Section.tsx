@@ -23,14 +23,19 @@ export function Section({
   id,
   children,
   bordered = true,
+  reveal = true,
 }: {
   id?: string;
   children: ReactNode;
   bordered?: boolean;
+  // When true (default) the whole section fades up on scroll. Set false for
+  // sections that stagger their own inner grid instead, to avoid nesting reveals.
+  reveal?: boolean;
 }) {
   return (
     <section
       id={id}
+      data-reveal={reveal ? "" : undefined}
       style={{
         padding: "clamp(48px,6vw,84px) 0",
         borderTop: bordered ? "1px solid var(--color-divider)" : undefined,

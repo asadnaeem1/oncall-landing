@@ -18,6 +18,10 @@
   --btn-ink: #ffffff;
   --btn-line: var(--color-accent-900);
 
+  /* blueprint background grid — kept faint so it reads as paper texture, not decoration */
+  --grid-line: color-mix(in srgb, #1d1f20 6%, transparent);
+  --band-glow: color-mix(in srgb, #ffffff 9%, transparent);
+
   --font-heading-weight: 600;
 }
 
@@ -33,6 +37,9 @@ html[data-theme="dark"] {
   --btn-bg: #eef1f3;
   --btn-ink: #16181a;
   --btn-line: #eef1f3;
+
+  --grid-line: color-mix(in srgb, #ffffff 7%, transparent);
+  --band-glow: color-mix(in srgb, #ffffff 6%, transparent);
 }
 
 * {
@@ -102,9 +109,36 @@ a {
 
 /* — layout — */
 .container {
+  position: relative;
+  z-index: 1;
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 clamp(20px, 5vw, 72px);
+}
+
+/* — blueprint background texture: a fixed, faint grid in the viewport gutters.
+   Masked to fade out under the centered content column so body text stays clean. — */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 62% 55% at 50% 42%,
+    transparent 0%,
+    transparent 38%,
+    #000 90%
+  );
+  mask-image: radial-gradient(
+    ellipse 62% 55% at 50% 42%,
+    transparent 0%,
+    transparent 38%,
+    #000 90%
+  );
 }
 
 /* — buttons — */
@@ -223,9 +257,83 @@ a {
   right: -6px;
 }
 
+.demo-call {
+  transition:
+    background-color 0.18s ease,
+    border-color 0.2s ease;
+}
 .demo-call:hover {
   background: color-mix(in srgb, #fff 8%, transparent);
+  border-color: color-mix(in srgb, #fff 75%, transparent);
 }
+
+/* — dark bands (demo, final CTA): a faint radial highlight adds depth without color — */
+.band {
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 0%, var(--band-glow), transparent 72%),
+    var(--band-bg);
+}
+
+/* — hover interactions — only on devices that actually hover, so nothing
+   sticks on touch. Color shifts are always allowed; motion is gated on
+   reduced-motion below. — */
+@media (hover: hover) {
+  .card-hover {
+    transition:
+      border-color 0.25s ease,
+      transform 0.25s ease,
+      box-shadow 0.3s ease;
+  }
+  .card-hover:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 60%, var(--color-divider));
+  }
+  .card-hover:hover > .corner {
+    color: var(--color-accent);
+  }
+  .faq summary:hover .faq-q {
+    color: var(--kicker);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .btn-primary {
+    transition:
+      background-color 0.2s ease,
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px color-mix(in srgb, var(--color-accent-900) 14%, transparent);
+  }
+}
+
+/* — scroll reveal — the `reveal-on` class is added to <html> before first
+   paint by a script in the layout, and only when the visitor has NOT asked
+   for reduced motion. Without it (no JS, or reduced motion) everything is
+   visible by default and nothing here applies. — */
+.reveal-on [data-reveal],
+.reveal-on [data-reveal-stagger] > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.6, 0.2, 1),
+    transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.reveal-on [data-reveal].is-visible,
+.reveal-on [data-reveal-stagger].is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+.reveal-on [data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay: 0.04s; }
+.reveal-on [data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-on [data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay: 0.2s; }
+.reveal-on [data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay: 0.28s; }
+.reveal-on [data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay: 0.36s; }
+.reveal-on [data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay: 0.44s; }
 
 /* — FAQ native disclosure: themed indicator, keyboard + ARIA free — */
 .faq summary {

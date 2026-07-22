@@ -27,7 +27,7 @@ export default function FollowUpBoss() {
             calendar.
           </p>
         </div>
-        <div className="blueprint" style={{ padding: "32px 28px" }}>
+        <div className="blueprint card-hover" style={{ padding: "32px 28px" }}>
           <i className="corner tl" />
           <i className="corner tr" />
           <i className="corner bl" />

@@ -16,19 +16,20 @@ const NOT_A_FIT = [
 
 export default function WhoItsFor() {
   return (
-    <Section>
+    <Section reveal={false}>
       <Kicker index="07" label="Who it's for" />
       <SectionHeading maxWidth="22ch" style={{ marginBottom: "clamp(32px,4vw,52px)" }}>
         This works best for a specific kind of team.
       </SectionHeading>
       <div
+        data-reveal-stagger=""
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
           gap: "clamp(24px,3vw,40px)",
         }}
       >
-        <div className="blueprint" style={{ padding: "30px 28px" }}>
+        <div className="blueprint card-hover" style={{ padding: "30px 28px" }}>
           <i className="corner tl" />
           <i className="corner tr" />
           <i className="corner bl" />
@@ -56,7 +57,7 @@ export default function WhoItsFor() {
           </ul>
         </div>
 
-        <div className="blueprint" style={{ padding: "30px 28px" }}>
+        <div className="blueprint card-hover" style={{ padding: "30px 28px" }}>
           <i className="corner tl" />
           <i className="corner tr" />
           <i className="corner bl" />

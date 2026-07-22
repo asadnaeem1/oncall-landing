@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
+import RevealController from "@/components/RevealController";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -26,6 +27,11 @@ export const metadata: Metadata = {
 // (or the OS preference) applies without a flash of the wrong theme.
 const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('oncall-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
 
+// Opts into scroll-reveal before first paint, so reveal targets start hidden
+// with no flash. Skipped entirely for reduced-motion or when IntersectionObserver
+// is unavailable — in which case the content just renders visible.
+const REVEAL_INIT_SCRIPT = `(function(){try{if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(!('IntersectionObserver' in window))return;document.documentElement.classList.add('reveal-on');}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,8 +45,13 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_INIT_SCRIPT }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className="bg-grid" aria-hidden="true" />
+        {children}
+        <RevealController />
+      </body>
     </html>
   );
 }
