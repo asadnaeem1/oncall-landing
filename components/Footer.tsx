@@ -1,3 +1,4 @@
+import VoirMark from "./VoirMark";
 import { CONTACT_EMAIL, VOIR_LABS_URL } from "@/lib/constants";
 
 export default function Footer() {
@@ -32,6 +33,7 @@ export default function Footer() {
           </p>
         </div>
         <div>
+          <VoirMark height={30} gradientId="voir-footer" />
           <div
             style={{
               fontFamily: "var(--font-heading)",
@@ -39,7 +41,7 @@ export default function Footer() {
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               color: "var(--kicker)",
-              marginBottom: 12,
+              margin: "14px 0 12px",
             }}
           >
             A product of Voir Labs

@@ -1,4 +1,5 @@
 import ThemeToggle from "./ThemeToggle";
+import VoirMark from "./VoirMark";
 import { CALENDLY_URL } from "@/lib/constants";
 
 export default function Nav() {
@@ -16,18 +17,21 @@ export default function Nav() {
         paddingInline: "clamp(20px,5vw,72px)",
       }}
     >
-      <span style={{ display: "flex", alignItems: "baseline", gap: 8, marginRight: "auto" }}>
-        <span style={{ fontSize: 20, letterSpacing: "0.01em" }}>OnCall</span>
-        <span
-          style={{
-            fontFamily: "var(--font-body)",
-            fontWeight: 400,
-            fontSize: 13,
-            letterSpacing: "0.04em",
-            color: "color-mix(in srgb,var(--color-text) 60%,transparent)",
-          }}
-        >
-          by Voir Labs
+      <span style={{ display: "flex", alignItems: "center", gap: 11, marginRight: "auto" }}>
+        <VoirMark height={26} gradientId="voir-nav" />
+        <span style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+          <span style={{ fontSize: 20, letterSpacing: "0.01em" }}>OnCall</span>
+          <span
+            style={{
+              fontFamily: "var(--font-body)",
+              fontWeight: 400,
+              fontSize: 13,
+              letterSpacing: "0.04em",
+              color: "color-mix(in srgb,var(--color-text) 60%,transparent)",
+            }}
+          >
+            by Voir Labs
+          </span>
         </span>
       </span>
       <a href="#how" className="nav-link">
