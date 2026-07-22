@@ -1,3 +1,4 @@
+import Waveform from "./Waveform";
 import { PhoneIcon } from "./icons";
 import { DEMO_PHONE_DISPLAY, DEMO_PHONE_TEL } from "@/lib/constants";
 
@@ -87,26 +88,36 @@ export default function Demo() {
           brokerage. Ask it hard questions. Interrupt it. Try to trip it up. Then decide whether
           it belongs in front of your leads.
         </p>
+        <div
+          style={{
+            maxWidth: 440,
+            margin: "clamp(30px,4vw,44px) auto 0",
+            color: "var(--color-accent-200)",
+          }}
+        >
+          <Waveform bars={44} height={44} />
+        </div>
         <a
           href={DEMO_PHONE_TEL}
           className="demo-call"
           style={{
             display: "inline-flex",
             alignItems: "center",
-            gap: 16,
-            margin: "clamp(32px,4vw,48px) 0 0",
+            gap: "clamp(10px,2vw,16px)",
+            margin: "clamp(20px,2.5vw,28px) 0 0",
+            maxWidth: "100%",
             textDecoration: "none",
             color: "#fff",
             border: "1px solid color-mix(in srgb,#fff 45%,transparent)",
-            padding: "clamp(18px,2.4vw,28px) clamp(24px,3.5vw,48px)",
+            padding: "clamp(16px,2.4vw,28px) clamp(16px,3.2vw,48px)",
           }}
         >
-          <PhoneIcon size={34} />
+          <PhoneIcon size={30} />
           <span
             style={{
               fontFamily: "var(--font-heading)",
               fontWeight: 600,
-              fontSize: "clamp(34px,5.5vw,60px)",
+              fontSize: "clamp(27px,5.6vw,60px)",
               letterSpacing: "0.01em",
               fontFeatureSettings: "'tnum' 1",
               whiteSpace: "nowrap",

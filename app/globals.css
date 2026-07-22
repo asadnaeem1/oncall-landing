@@ -335,6 +335,355 @@ a {
 .reveal-on [data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay: 0.36s; }
 .reveal-on [data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay: 0.44s; }
 
+/* ══════════════════════════════════════════════════════════════════════
+   Animated graphics — all pure CSS/SVG, no libraries. The visual language
+   is a live phone call (waveform, ringing, qualifying, booking), never
+   abstract "AI" imagery. Everything freezes to a legible static state under
+   prefers-reduced-motion (see the block at the end).
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* voice waveform — bars scale vertically in a travelling ripple */
+.waveform {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--color-accent);
+}
+.waveform > span {
+  display: block;
+  flex: 1 1 0;
+  min-width: 2px;
+  max-width: 6px;
+  height: 100%;
+  background: currentColor;
+  border-radius: 3px;
+  transform: scaleY(0.32);
+  transform-origin: center;
+  animation: ocWave 1.15s ease-in-out infinite;
+}
+@keyframes ocWave {
+  0%,
+  100% {
+    transform: scaleY(0.28);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* hero live-call panel */
+.hero-grid {
+  display: grid;
+  gap: clamp(32px, 5vw, 60px);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+}
+.hero-call {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: clamp(20px, 3vw, 28px);
+  background: color-mix(in srgb, var(--color-surface) 40%, transparent);
+}
+.hc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.hc-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 72%, transparent);
+}
+.hc-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #3fb27f;
+  animation: ocPulse 1.8s ease-in-out infinite;
+}
+.hc-chip {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kicker);
+  border: 1px solid var(--color-divider);
+  padding: 4px 10px;
+}
+.hc-lead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hc-avatar {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-divider);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--kicker);
+}
+.hc-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.2;
+}
+.hc-src {
+  font-size: 13px;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+}
+.hc-wave {
+  display: flex;
+  align-items: center;
+  height: 46px;
+  padding: 6px 0;
+  border-top: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+}
+.hc-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.hc-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: color-mix(in srgb, var(--color-text) 42%, transparent);
+  animation: ocStep 8s ease-in-out infinite;
+}
+.hc-step::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+}
+.hc-steps > .hc-step:nth-child(1) {
+  animation-delay: 0s;
+}
+.hc-steps > .hc-step:nth-child(2) {
+  animation-delay: 2s;
+}
+.hc-steps > .hc-step:nth-child(3) {
+  animation-delay: 4s;
+}
+.hc-steps > .hc-step:nth-child(4) {
+  animation-delay: 6s;
+}
+@keyframes ocStep {
+  0%,
+  100% {
+    color: color-mix(in srgb, var(--color-text) 42%, transparent);
+  }
+  3%,
+  20% {
+    color: var(--kicker);
+  }
+  23% {
+    color: color-mix(in srgb, var(--color-text) 42%, transparent);
+  }
+}
+.hc-booked {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 15px;
+  color: #2f9e6b;
+  opacity: 0;
+  transform: translateY(4px);
+  animation: ocBooked 8s ease-in-out infinite;
+}
+@keyframes ocBooked {
+  0%,
+  74% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  80%,
+  97% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+/* capability glyphs (What it does) */
+.g-ring,
+.g-check,
+.g-cal,
+.g-wave {
+  color: var(--kicker);
+  flex: none;
+}
+.g-wave {
+  width: 40px;
+  height: 26px;
+}
+.g-ring {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+}
+.g-ring i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.g-ring b {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  opacity: 0;
+  animation: ocRing 2.4s ease-out infinite;
+}
+.g-ring b:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.g-ring b:nth-child(4) {
+  animation-delay: 1.6s;
+}
+@keyframes ocRing {
+  0% {
+    width: 7px;
+    height: 7px;
+    margin: -3.5px 0 0 -3.5px;
+    opacity: 0.8;
+  }
+  100% {
+    width: 34px;
+    height: 34px;
+    margin: -17px 0 0 -17px;
+    opacity: 0;
+  }
+}
+.g-check svg,
+.g-cal svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+.g-check path {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 22;
+  animation: ocDraw 2.8s ease-in-out infinite;
+}
+@keyframes ocDraw {
+  0%,
+  10% {
+    stroke-dashoffset: 22;
+  }
+  45%,
+  75% {
+    stroke-dashoffset: 0;
+  }
+  95%,
+  100% {
+    stroke-dashoffset: 22;
+  }
+}
+.g-cal .slot {
+  opacity: 0;
+  animation: ocSlot 2.8s ease-in-out infinite;
+}
+@keyframes ocSlot {
+  0%,
+  20% {
+    opacity: 0;
+  }
+  45%,
+  82% {
+    opacity: 1;
+  }
+  97%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* freeze every animated graphic to a legible static state */
+@media (prefers-reduced-motion: reduce) {
+  .waveform > span {
+    animation: none;
+    transform: scaleY(0.5);
+  }
+  .waveform > span:nth-child(3n) {
+    transform: scaleY(0.85);
+  }
+  .waveform > span:nth-child(4n) {
+    transform: scaleY(0.32);
+  }
+  .hc-dot {
+    animation: none;
+  }
+  .hc-step {
+    animation: none;
+    color: color-mix(in srgb, var(--color-text) 42%, transparent);
+  }
+  .hc-steps > .hc-step:last-child {
+    color: var(--kicker);
+  }
+  .hc-booked {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .g-ring b {
+    animation: none;
+    opacity: 0;
+  }
+  .g-ring b:nth-child(2) {
+    opacity: 0.5;
+    width: 22px;
+    height: 22px;
+    margin: -11px 0 0 -11px;
+  }
+  .g-check path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .g-cal .slot {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* — FAQ native disclosure: themed indicator, keyboard + ARIA free — */
 .faq summary {
   list-style: none;

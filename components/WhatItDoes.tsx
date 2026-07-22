@@ -1,25 +1,30 @@
+import CapabilityGlyph, { type GlyphType } from "./CapabilityGlyph";
 import { Kicker, Section, SectionHeading } from "./Section";
 
-const CAPABILITIES = [
+const CAPABILITIES: { n: string; title: string; body: string; glyph: GlyphType }[] = [
   {
     n: "01",
     title: "Calls in under 60 seconds",
     body: "The moment a lead hits your CRM, it rings. Nights, weekends, holidays, the middle of a listing appointment. Every lead, every time, no exceptions.",
+    glyph: "ring",
   },
   {
     n: "02",
     title: "Holds a real conversation",
     body: "Not a text blast, not a recorded message. It talks — and it's trained on your scripts, your market, your price points, and the objections your team actually hears.",
+    glyph: "wave",
   },
   {
     n: "03",
     title: "Qualifies properly",
     body: "Buying or selling, timeline, price range, financing, area, whether they're already working with an agent, and what's actually motivating the move. Delivered as a summary your agent reads in ten seconds.",
+    glyph: "check",
   },
   {
     n: "04",
     title: "Books the appointment",
     body: "Straight onto the right agent's calendar. When a lead is hot, it transfers to a live human mid-call instead of scheduling for later.",
+    glyph: "cal",
   },
 ];
 
@@ -44,17 +49,27 @@ export default function WhatItDoes() {
             <i className="corner tr" />
             <i className="corner bl" />
             <i className="corner br" />
-            <span
+            <div
               style={{
-                fontFamily: "var(--font-heading)",
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: "0.08em",
-                color: "var(--kicker)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                minHeight: 34,
               }}
             >
-              {c.n}
-            </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  letterSpacing: "0.08em",
+                  color: "var(--kicker)",
+                }}
+              >
+                {c.n}
+              </span>
+              <CapabilityGlyph type={c.glyph} />
+            </div>
             <h3
               style={{
                 fontFamily: "var(--font-heading)",
