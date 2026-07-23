@@ -1,5 +1,6 @@
 import { CALENDLY_URL } from "@/lib/constants";
 import HeroCallPanel from "./HeroCallPanel";
+import WavyArrow from "./WavyArrow";
 
 export default function Hero() {
   return (
@@ -39,8 +40,10 @@ export default function Hero() {
           </p>
           <div
             style={{
+              position: "relative",
               display: "flex",
               flexWrap: "wrap",
+              width: "fit-content",
               gap: 14,
               marginTop: "clamp(28px,3.5vw,40px)",
             }}
@@ -61,6 +64,7 @@ export default function Hero() {
             >
               Hear it for yourself →
             </a>
+            <WavyArrow width={68} rotate={112} style={{ top: -44, right: 2 }} />
           </div>
           <p
             style={{

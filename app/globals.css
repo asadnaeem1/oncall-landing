@@ -627,6 +627,31 @@ a {
   }
 }
 
+/* wavy arrow — a small decorative nudge toward a nearby CTA */
+.wavy-arrow {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.wavy-arrow-bob {
+  display: block;
+  animation: ocArrowBob 2.6s ease-in-out infinite;
+}
+@keyframes ocArrowBob {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2px, -5px);
+  }
+}
+@media (max-width: 640px) {
+  .wavy-arrow {
+    display: none;
+  }
+}
+
 /* freeze every animated graphic to a legible static state */
 @media (prefers-reduced-motion: reduce) {
   .waveform > span {
@@ -671,6 +696,9 @@ a {
   .g-cal .slot {
     animation: none;
     opacity: 1;
+  }
+  .wavy-arrow-bob {
+    animation: none;
   }
 }
 

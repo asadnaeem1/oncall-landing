@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import { ConversationProvider, useConversation } from "@elevenlabs/react";
 import Waveform from "./Waveform";
+import WavyArrow from "./WavyArrow";
 import { MicIcon } from "./icons";
 import { ELEVENLABS_AGENT_ID } from "@/lib/constants";
 
@@ -116,15 +117,18 @@ function VoiceDemoInner() {
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-          <button
-            type="button"
-            onClick={startCall}
-            disabled={connecting}
-            style={{ ...startBtn, opacity: connecting ? 0.7 : 1 }}
-          >
-            <MicIcon size={22} color="var(--color-accent-900)" />
-            {connecting ? "Connecting…" : "Talk to the demo agent"}
-          </button>
+          <div style={{ position: "relative", width: "fit-content" }}>
+            {!connecting && <WavyArrow width={58} rotate={12} style={{ top: 8, left: -72 }} />}
+            <button
+              type="button"
+              onClick={startCall}
+              disabled={connecting}
+              style={{ ...startBtn, opacity: connecting ? 0.7 : 1 }}
+            >
+              <MicIcon size={22} color="var(--color-accent-900)" />
+              {connecting ? "Connecting…" : "Talk to the demo agent"}
+            </button>
+          </div>
           {error ? (
             <p
               role="alert"
