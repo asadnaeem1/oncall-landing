@@ -257,16 +257,6 @@ a {
   right: -6px;
 }
 
-.demo-call {
-  transition:
-    background-color 0.18s ease,
-    border-color 0.2s ease;
-}
-.demo-call:hover {
-  background: color-mix(in srgb, #fff 8%, transparent);
-  border-color: color-mix(in srgb, #fff 75%, transparent);
-}
-
 /* — dark bands (demo, final CTA): a faint radial highlight adds depth without color — */
 .band {
   background:

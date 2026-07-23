@@ -1,4 +1,4 @@
-import { CALENDLY_URL, DEMO_PHONE_DISPLAY, DEMO_PHONE_TEL } from "@/lib/constants";
+import { CALENDLY_URL } from "@/lib/constants";
 
 export default function FinalCta() {
   return (
@@ -79,19 +79,19 @@ export default function FinalCta() {
             Book a 20-minute call
           </a>
           <span style={{ fontSize: 16, color: "color-mix(in srgb,#fff 80%,transparent)" }}>
-            Or call the demo agent first:{" "}
+            Or{" "}
             <a
-              href={DEMO_PHONE_TEL}
+              href="#demo"
               style={{
                 color: "#fff",
                 fontFamily: "var(--font-heading)",
                 fontWeight: 600,
-                whiteSpace: "nowrap",
                 textUnderlineOffset: 4,
               }}
             >
-              {DEMO_PHONE_DISPLAY}
-            </a>
+              talk to the demo agent
+            </a>{" "}
+            first
           </span>
         </div>
       </div>
