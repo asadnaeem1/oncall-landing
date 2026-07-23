@@ -123,6 +123,7 @@ function VoiceDemoInner() {
               type="button"
               onClick={startCall}
               disabled={connecting}
+              className={connecting ? undefined : "btn-pulse"}
               style={{ ...startBtn, opacity: connecting ? 0.7 : 1 }}
             >
               <MicIcon size={22} color="var(--color-accent-900)" />

@@ -59,12 +59,12 @@ export default function Hero() {
             </a>
             <a
               href="#demo"
-              className="btn btn-secondary"
+              className="btn btn-secondary btn-pulse"
               style={{ fontSize: 16, padding: "14px 22px", minHeight: 52 }}
             >
               Hear it for yourself →
             </a>
-            <WavyArrow width={68} rotate={112} style={{ top: -44, right: 2 }} />
+            <WavyArrow width={56} rotate={158} style={{ top: -6, right: -56 }} />
           </div>
           <p
             style={{

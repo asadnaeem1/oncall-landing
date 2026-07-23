@@ -177,6 +177,28 @@ a {
   background: color-mix(in srgb, var(--color-text) 7%, transparent);
 }
 
+/* Subtle attention ring — reserved for the two "listen/talk" CTAs, not the
+   primary booking button, so it nudges toward the demo without competing
+   with the actual conversion action. Pauses on hover/focus so it doesn't
+   fight the hover state, and stops entirely once a call is in progress
+   (callers add/remove this class themselves; it's not tied to :disabled). */
+.btn-pulse {
+  animation: ocBtnPulse 2.6s ease-in-out infinite;
+}
+.btn-pulse:hover,
+.btn-pulse:focus-visible {
+  animation-play-state: paused;
+}
+@keyframes ocBtnPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--color-accent) 0%, transparent);
+  }
+}
+
 /* — nav — */
 .nav {
   display: flex;
@@ -698,6 +720,9 @@ a {
     opacity: 1;
   }
   .wavy-arrow-bob {
+    animation: none;
+  }
+  .btn-pulse {
     animation: none;
   }
 }

@@ -1,3 +1,4 @@
+import DemoBar from "@/components/DemoBar";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
@@ -17,6 +18,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
+      <DemoBar />
       <Nav />
       <div className="container">
         <Hero />
