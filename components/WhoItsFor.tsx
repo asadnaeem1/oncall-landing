@@ -17,7 +17,7 @@ const NOT_A_FIT = [
 export default function WhoItsFor() {
   return (
     <Section reveal={false}>
-      <Kicker index="07" label="Who it's for" />
+      <Kicker index="08" label="Who it's for" />
       <SectionHeading maxWidth="22ch" style={{ marginBottom: "clamp(32px,4vw,52px)" }}>
         This works best for a specific kind of team.
       </SectionHeading>

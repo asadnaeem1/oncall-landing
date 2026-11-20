@@ -50,7 +50,7 @@ const ITEMS = [
 export default function Compliance() {
   return (
     <Section>
-      <Kicker index="08" label="Compliance" />
+      <Kicker index="09" label="Compliance" />
       <SectionHeading maxWidth="20ch" style={{ marginBottom: 12 }}>
         Built for the rules you&apos;re accountable to.
       </SectionHeading>

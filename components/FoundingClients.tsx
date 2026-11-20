@@ -9,7 +9,7 @@ export default function FoundingClients() {
         <i className="corner tr" />
         <i className="corner bl" />
         <i className="corner br" />
-        <Kicker index="09" label="Founding clients" />
+        <Kicker index="10" label="Founding clients" />
         <SectionHeading maxWidth="20ch" style={{ marginBottom: 24 }}>
           We&apos;re taking on three founding clients.
         </SectionHeading>

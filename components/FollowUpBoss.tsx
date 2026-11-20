@@ -12,7 +12,7 @@ export default function FollowUpBoss() {
         }}
       >
         <div>
-          <Kicker index="04" label="Built for Follow Up Boss" />
+          <Kicker index="05" label="Built for Follow Up Boss" />
           <SectionHeading maxWidth="18ch" style={{ marginBottom: 24 }}>
             It lives inside the CRM you already use.
           </SectionHeading>

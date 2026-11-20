@@ -43,3 +43,6 @@ next-env.d.ts
 # local-only ElevenLabs demo agent config (system prompt, knowledge base, and
 # a .env with a real API key) — must never be published to the remotes
 /elevenlabs-agent-demo/
+
+# internal pricing/cost model — never publish with the site
+docs/oncall-cost-model.html

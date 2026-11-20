@@ -45,6 +45,13 @@ npm run lint     # eslint
 ## Notes
 
 - No pricing, no competitor names, no unsourced stats — see the design brief §10.
+- The "example month" section (homepage) and `/operations` page show a modeled example for a
+  typical team, not a real client. All figures live in `lib/sample-month.ts`. Keep the "example"
+  framing in the copy until they're replaced with pilot data.
+- ElevenLabs agent pricing for the cost calculator is static in `lib/elevenlabs-pricing.ts`
+  (ElevenLabs has no pricing API and the site has no backend). Update the numbers and `asOf`
+  by hand from https://elevenlabs.io/pricing/agents when they change. `/operations` is
+  `noindex`.
 - The Calendly link and the ElevenLabs demo agent ID live in `lib/constants.ts`. The agent ID is
   public (safe to ship client-side); the ElevenLabs API key is **not** used by the site and must
   never be committed — it stays in the gitignored `elevenlabs-agent-demo/.env`.

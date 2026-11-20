@@ -31,7 +31,7 @@ const POINTS = [
 export default function NoDisruption() {
   return (
     <Section>
-      <Kicker index="05" label="It doesn't disrupt anything" />
+      <Kicker index="06" label="It doesn't disrupt anything" />
       <SectionHeading maxWidth="20ch" style={{ marginBottom: 12 }}>
         You have enough tools. This isn&apos;t another one.
       </SectionHeading>

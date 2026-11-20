@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 // Wires up the scroll-reveal effect. The `reveal-on` class is added to
 // <html> before first paint by the inline script in the root layout — and
 // only when the visitor hasn't requested reduced motion. If it isn't there
 // (no JS, or reduced motion), we do nothing and the content stays visible.
 export default function RevealController() {
+  const pathname = usePathname();
   useEffect(() => {
     if (!document.documentElement.classList.contains("reveal-on")) return;
 
@@ -42,7 +44,9 @@ export default function RevealController() {
     }
 
     return () => observer.disconnect();
-  }, []);
+    // Re-run on client-side navigation: the layout (and this component) persists
+    // across routes, so a new page's sections need to be picked up again.
+  }, [pathname]);
 
   return null;
 }

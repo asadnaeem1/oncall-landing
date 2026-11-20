@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CALENDLY_URL } from "@/lib/constants";
 
 export default function FinalCta() {
@@ -80,8 +81,8 @@ export default function FinalCta() {
           </a>
           <span style={{ fontSize: 16, color: "color-mix(in srgb,#fff 80%,transparent)" }}>
             Or{" "}
-            <a
-              href="#demo"
+            <Link
+              href="/#demo"
               style={{
                 color: "#fff",
                 fontFamily: "var(--font-heading)",
@@ -90,7 +91,7 @@ export default function FinalCta() {
               }}
             >
               talk to the demo agent
-            </a>{" "}
+            </Link>{" "}
             first
           </span>
         </div>

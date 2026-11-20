@@ -55,7 +55,7 @@ export default function Faq() {
         scrollMarginTop: 80,
       }}
     >
-      <Kicker index="10" label="FAQ" />
+      <Kicker index="11" label="FAQ" />
       <SectionHeading style={{ marginBottom: "clamp(28px,4vw,44px)" }}>
         Questions before the call.
       </SectionHeading>

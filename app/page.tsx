@@ -5,6 +5,7 @@ import Problem from "@/components/Problem";
 import WhatItDoes from "@/components/WhatItDoes";
 import Demo from "@/components/Demo";
 import HowItWorks from "@/components/HowItWorks";
+import SampleMonth from "@/components/SampleMonth";
 import FollowUpBoss from "@/components/FollowUpBoss";
 import NoDisruption from "@/components/NoDisruption";
 import WhatItDoesnt from "@/components/WhatItDoesnt";
@@ -26,6 +27,7 @@ export default function Home() {
         <WhatItDoes />
         <Demo />
         <HowItWorks />
+        <SampleMonth />
         <FollowUpBoss />
         <NoDisruption />
         <WhatItDoesnt />

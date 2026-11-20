@@ -23,7 +23,7 @@ const LIMITS = [
 export default function WhatItDoesnt() {
   return (
     <Section>
-      <Kicker index="06" label="What it doesn't do" />
+      <Kicker index="07" label="What it doesn't do" />
       <SectionHeading style={{ marginBottom: 12 }}>
         Where we draw the line.
       </SectionHeading>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import VoirMark from "./VoirMark";
 import { CALENDLY_URL } from "@/lib/constants";
@@ -17,7 +18,18 @@ export default function Nav() {
         paddingInline: "clamp(20px,5vw,72px)",
       }}
     >
-      <span style={{ display: "flex", alignItems: "center", gap: 11, marginRight: "auto" }}>
+      <Link
+        href="/"
+        aria-label="OnCall by Voir Labs — home"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 11,
+          marginRight: "auto",
+          color: "inherit",
+          textDecoration: "none",
+        }}
+      >
         <VoirMark height={26} gradientId="voir-nav" />
         <span style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
           <span style={{ fontSize: 20, letterSpacing: "0.01em" }}>OnCall</span>
@@ -33,16 +45,19 @@ export default function Nav() {
             by Voir Labs
           </span>
         </span>
-      </span>
-      <a href="#how" className="nav-link">
+      </Link>
+      <Link href="/#how" className="nav-link">
         How it works
-      </a>
-      <a href="#what" className="nav-link">
+      </Link>
+      <Link href="/#what" className="nav-link">
         What it does
-      </a>
-      <a href="#faq" className="nav-link">
+      </Link>
+      <Link href="/operations" className="nav-link">
+        See the results
+      </Link>
+      <Link href="/#faq" className="nav-link">
         FAQ
-      </a>
+      </Link>
       <ThemeToggle />
       <a href={CALENDLY_URL} target="_blank" rel="noopener" className="btn btn-primary">
         Book a call
